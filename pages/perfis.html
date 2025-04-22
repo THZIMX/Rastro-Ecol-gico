@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfis Fictícios - Rastro Ecológico</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">🌱 Rastro Ecológico</div>
+      <button class="menu-toggle">☰</button>
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="diagnostico.html">Diagnóstico</a></li>
+        <li><a href="dados.html">Dados</a></li>
+        <li><a href="perfis.html">Perfis</a></li>
+        <li><a href="analise.html">Análise</a></li>
+        <li><a href="participantes.html">Equipe</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="perfis" class="section">
+      <div class="container">
+        <h2>Perfis Fictícios</h2>
+        <p>Conheça perfis com estilos de vida diferentes e veja como seus hábitos impactam o meio ambiente.</p>
+        <div class="perfil-cards">
+          <div class="card">
+            <div class="profile-icon">🚗</div>
+            <h3>Cesar</h3>
+            <p>Transporte: Carro</p>
+            <p>Alimentação: Carnívoro</p>
+            <p>Energia: Alta</p>
+            <p class="footprint">Rastro: 4,1 gha / 2,3 planetas</p>
+          </div>
+          <div class="card">
+            <div class="profile-icon">🚲</div>
+            <h3>Richard</h3>
+            <p>Transporte: Bicicleta</p>
+            <p>Alimentação: Vegetariana</p>
+            <p>Energia: Baixa</p>
+            <p class="footprint">Rastro: 2,0 gha / 1,1 planetas</p>
+          </div>
+          <div class="card">
+            <div class="profile-icon">🚌</div>
+            <h3>Maria</h3>
+            <p>Transporte: Ônibus</p>
+            <p>Alimentação: Vegana</p>
+            <p>Energia: Moderada</p>
+            <p class="footprint">Rastro: 1,8 gha / 1,0 planeta</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <a href="../index.html" class="btn voltar">Voltar</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 - Site feito por Mateus para a Feira de Matemática</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sistema de comparação entre perfis
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function() {
+        this.classList.toggle('selected');
+        updateComparison();
+      });
+    });
+
+    function updateComparison() {
+      // Lógica para comparar perfis selecionados
+      const selected = document.querySelectorAll('.card.selected');
+      if(selected.length > 1) {
+        // Mostrar comparação entre os perfis selecionados
+      }
+    }
+  </script>
+</body>
+</html>
