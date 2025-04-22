@@ -6,6 +6,68 @@
   <title>Equipe - Rastro Ecológico</title>
   <link rel="stylesheet" href="../css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .team-member {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    .member-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    .role {
+      font-weight: 600;
+      color: #2d6a4f;
+      margin-bottom: 10px;
+    }
+    .member-details {
+      font-size: 15px;
+      color: #555;
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+    .member-details.show {
+      display: block;
+    }
+    .hero {
+      background-color: #e6f4ea;
+      padding: 60px 20px 40px;
+      text-align: center;
+      color: #1b4332;
+    }
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #3d5a4b;
+    }
+    footer {
+      background-color: #2d6a4f;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
@@ -34,65 +96,49 @@
         <div class="member-icon">👨‍💻</div>
         <h3>Mateus</h3>
         <p class="role">Desenvolvedor Web</p>
-        <div class="member-details">
-          <p>Responsável pelo desenvolvimento front-end e integração de funcionalidades.</p>
-        </div>
+        <div class="member-details">Responsável pelo desenvolvimento front-end e integração de funcionalidades.</div>
       </div>
       <div class="team-member">
         <div class="member-icon">📊</div>
-        <h3>Laylla</h3>
+        <h3>Laylla/Richard</h3>
         <p class="role">Análise de Dados</p>
-        <div class="member-details">
-          <p>Coleta e análise dos dados sobre pegada ecológica.</p>
-        </div>
+        <div class="member-details">Coleta e análise dos dados sobre pegada ecológica, interpretação estatística e visualização de gráficos.</div>
       </div>
       <div class="team-member">
         <div class="member-icon">📖</div>
-        <h3>Jamilly</h3>
+        <h3>Jamilly/Mateus</h3>
         <p class="role">Pesquisa e Conteúdo</p>
-        <div class="member-details">
-          <p>Pesquisa sobre sustentabilidade e produção de conteúdo.</p>
-        </div>
+        <div class="member-details">Responsável pela pesquisa de base científica, redação dos textos e estruturação dos conceitos ecológicos.</div>
       </div>
       <div class="team-member">
         <div class="member-icon">🎨</div>
         <h3>Mateus</h3>
         <p class="role">Design e Interface</p>
-        <div class="member-details">
-          <p>Criação da identidade visual e experiência do usuário.</p>
-        </div>
+        <div class="member-details">Criação da identidade visual, paleta de cores e experiência do usuário (UX/UI).</div>
       </div>
       <div class="team-member">
         <div class="member-icon">🔍</div>
-        <h3>César</h3>
+        <h3>César/Alerrandro</h3>
         <p class="role">Pesquisador</p>
-        <div class="member-details">
-          <p>Pesquisa de informações sobre impacto ambiental.</p>
-        </div>
+        <div class="member-details">Responsável por aprofundar as questões ambientais, buscar dados reais e validar informações.</div>
       </div>
       <div class="team-member">
         <div class="member-icon">🧮</div>
         <h3>Grasielly</h3>
         <p class="role">Análises Matemáticas</p>
-        <div class="member-details">
-          <p>Cálculos e modelagem matemática dos dados.</p>
-        </div>
+        <div class="member-details">Aplica cálculos matemáticos, modelagem de dados e interpretação quantitativa dos resultados.</div>
       </div>
       <div class="team-member">
         <div class="member-icon">📷</div>
         <h3>Mateus</h3>
         <p class="role">Mídia e Edição</p>
-        <div class="member-details">
-          <p>Produção de material visual e edição de conteúdo.</p>
-        </div>
+        <div class="member-details">Produz e edita imagens, vídeos e materiais de apoio ao projeto.</div>
       </div>
       <div class="team-member">
         <div class="member-icon">📑</div>
-        <h3>Richard</h3>
+        <h3>Richard/julia</h3>
         <p class="role">Pesquisas</p>
-        <div class="member-details">
-          <p>Pesquisa e organização de referências científicas.</p>
-        </div>
+        <div class="member-details">Organiza referências bibliográficas e contribui na fundamentação científica do trabalho.</div>
       </div>
     </section>
   </main>
@@ -111,3 +157,4 @@
   </script>
 </body>
 </html>
+
