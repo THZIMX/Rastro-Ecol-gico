@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.addEventListener('click', function() {
         document.querySelector('.graph-btn.active').classList.remove('active');
         this.classList.add('active');
-        
+
         myChart.config.type = this.dataset.type;
         myChart.update();
       });
