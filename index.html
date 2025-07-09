@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rastro Ecológico - Feira de Matemática</title>
+  <title>Pegada Ecológica - Feira de Ciências</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
 
   <header>
     <nav>
-      <div class="logo">🌱 Rastro Ecológico</div>
-      <button class="menu-toggle">☰</button>
-      <ul class="menu">   
+      <div class="logo">👣 Pegada Ecológica</div>
+      <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+      <ul class="menu">
         <li><a href="pages/diagnostico.html">Diagnóstico</a></li>
         <li><a href="pages/dados.html">Dados</a></li>
         <li><a href="pages/perfis.html">Perfis</a></li>
@@ -21,6 +20,7 @@
         <li><a href="pages/participantes.html">Equipe</a></li>
       </ul>
     </nav>
+
     <div class="hero">
       <h1>Descubra seu impacto ambiental</h1>
       <p>Calcule sua pegada ecológica e veja dados interativos sobre sustentabilidade.</p>
@@ -59,16 +59,16 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 - Feira de Matemática | Desenvolvido por Mateus</p>
+    <p>&copy; 2025 - Feira de Ciências | Desenvolvido por Mateus</p>
   </footer>
 
   <script>
     // Menu mobile
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.menu-toggle').addEventListener('click', function () {
       document.querySelector('.menu').classList.toggle('active');
     });
 
-    // Animar cards sequencialmente
+    // Animação sequencial dos cards
     document.addEventListener('DOMContentLoaded', () => {
       const cards = document.querySelectorAll('.card');
       cards.forEach((card, index) => {
@@ -76,5 +76,6 @@
       });
     });
   </script>
+
 </body>
 </html>
