@@ -1,15 +1,136 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfis Fictícios - Rastro Ecológico</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfis Fictícios - Pegada Ecológica</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .perfil-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 1.5rem;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #e0e0e0;
+      margin-bottom: 1rem;
+    }
+    .footprint {
+      font-weight: bold;
+      color: #333;
+      margin: 0.5rem 0;
+    }
+    .descricao {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0.8rem;
+      display: none;
+    }
+    .descricao.show {
+      display: block;
+    }
+    .impacto-baixo { border-top: 6px solid #4CAF50; }
+    .impacto-medio { border-top: 6px solid #FFC107; }
+    .impacto-alto { border-top: 6px solid #F44336; }
+    .tag { font-weight: bold; font-size: 0.9rem; }
+    .tag.verde { color: #4CAF50; }
+    .tag.amarelo { color: #FFC107; }
+    .tag.vermelho { color: #F44336; }
+    .toggle-desc {
+      margin-top: 0.8rem;
+      background: #f0f0f0;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .toggle-desc:hover {
+      background: #e0e0e0;
+    }
+    .compare-btn {
+      display: none;
+      margin: 2rem auto;
+      background: #2196F3;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .compare-btn.show {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .perfil-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .selected {
+      box-shadow: 0 0 0 3px #2196F3;
+    }
+    #modalComparacao {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none; justify-content: center; align-items: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%; max-width: 700px;
+      text-align: center;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 12px; right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #888;
+      cursor: pointer;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 2rem;
+    }
+    .comparison-table th, .comparison-table td {
+      border: 1px solid #ddd;
+      padding: 0.6rem;
+    }
+    .comparison-table th {
+      background-color: #f4f4f4;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav>
-      <div class="logo">🌱 Rastro Ecológico</div>
+      <div class="logo">👣 Pegada Ecológica</div>
       <button class="menu-toggle">☰</button>
       <ul class="menu">
         <li><a href="../index.html">Início</a></li>
@@ -20,68 +141,181 @@
         <li><a href="participantes.html">Equipe</a></li>
       </ul>
     </nav>
-  </header>
-
-  <main>
+  </header>  <main>
     <section id="perfis" class="section">
       <div class="container">
         <h2>Perfis Fictícios</h2>
-        <p>Conheça perfis com estilos de vida diferentes e veja como seus hábitos impactam o meio ambiente.</p>
-        <div class="perfil-cards">
-          <div class="card">
-            <div class="profile-icon">🚗</div>
-            <h3>Cesar</h3>
-            <p>Transporte: Carro</p>
-            <p>Alimentação: Carnívoro</p>
-            <p>Energia: Alta</p>
-            <p class="footprint">Rastro: 4,1 gha / 2,3 planetas</p>
-          </div>
-          <div class="card">
-            <div class="profile-icon">🚲</div>
-            <h3>Richard</h3>
-            <p>Transporte: Bicicleta</p>
-            <p>Alimentação: Vegetariana</p>
-            <p>Energia: Baixa</p>
-            <p class="footprint">Rastro: 2,0 gha / 1,1 planetas</p>
-          </div>
-          <div class="card">
-            <div class="profile-icon">🚌</div>
-            <h3>Maria</h3>
-            <p>Transporte: Ônibus</p>
-            <p>Alimentação: Vegana</p>
-            <p>Energia: Moderada</p>
-            <p class="footprint">Rastro: 1,8 gha / 1,0 planeta</p>
-          </div>
-        </div>
+        <p>Conheça perfis com estilos de vida diferentes e veja como seus hábitos impactam o meio ambiente.</p><div class="perfil-cards">
+      <div class="card impacto-baixo">
+        <img src="https://i.imgur.com/uZy6Rga.png" class="avatar" alt="Ana Clara">
+        <h3>Ana Clara <span class="tag verde">(baixo impacto)</span></h3>
+        <p><strong>Idade:</strong> 24 anos</p>
+        <p><strong>Profissão:</strong> Professora de Ecologia</p>
+        <p class="footprint">Rastro: 0,7 planeta Terra</p>
+        <div class="descricao">Vegana, nunca consome produtos de origem animal
+
+95% dos alimentos são frescos e produzidos localmente
+
+Mora em uma casa média com 2 pessoas, feita de tijolo/cimento
+
+Toma banhos curtos com água fria, não usa ar-condicionado
+
+Produz pouquíssimo lixo e separa corretamente (tem composteira)
+
+Anda sempre a pé (zero carro, zero transporte público)
+
+Não viaja de avião
+
+Usa energia renovável em 75% da casa
+
+Casa energeticamente eficiente</div>
+        <button class="toggle-desc">Ver mais</button>
       </div>
-    </section>
-    <div class="container">
-      <a href="../index.html" class="btn voltar">Voltar</a>
-    </div>
-  </main>
+      <div class="card impacto-medio">
+        <img src="https://i.imgur.com/mfV1L1H.png" class="avatar" alt="Diego">
+        <h3>Diego <span class="tag amarelo">(impacto médio)</span></h3>
+        <p><strong>Idade:</strong> 17 anos</p>
+        <p><strong>Profissão:</strong> Estudante</p>
+        <p class="footprint">Rastro: 1,9 planeta Terra</p>
+        <div class="descricao">Consome carne ocasionalmente (2 a 3 vezes por semana)
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 - Site feito por Mateus para a Feira de Matemática</p>
-    </div>
-  </footer>
+43% dos alimentos são frescos e 30% são locais
 
-  <script>
-    // Sistema de comparação entre perfis
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', function() {
-        this.classList.toggle('selected');
+Mora com a família em casa média de 84 m², tijolo/cimento
+
+Usa eletrônicos com frequência (celular, computador)
+
+Produz lixo em quantidade média, principalmente vestuário e móveis
+
+Usa transporte público (50 km/semana), não anda de carro
+
+Compartilha transporte quando necessário
+
+Não viaja de avião
+
+45% da energia da casa é renovável
+
+Eficiência energética da casa é média</div>
+        <button class="toggle-desc">Ver mais</button>
+      </div>
+      <div class="card impacto-alto">
+        <img src="https://i.imgur.com/0FjklHn.png" class="avatar" alt="Rafaela">
+        <h3>Rafaela <span class="tag vermelho">(alto impacto)</span></h3>
+        <p><strong>Idade:</strong> 26 anos</p>
+        <p><strong>Profissão:</strong> Influencer</p>
+        <p class="footprint">Rastro: 4.9 planetas Terra</p>
+        <div class="descricao">Come carne quase todos os dias
+
+Apenas 20% dos alimentos são frescos e produzidos localmente
+
+Mora sozinha em casa média (90 m²), tijolo/cimento
+
+Usa bastante ar-condicionado e iluminação artificial
+
+Produz lixo em volume médio (roupas, móveis, eletrônicos)
+
+Anda 68 km por semana de carro (consumo: 7L/100 km), não compartilha
+
+Não usa transporte público
+
+Viaja de avião cerca de 15h por ano
+
+25% da energia da casa é renovável
+
+A casa tem eficiência energética acima da média</div>
+        <button class="toggle-desc">Ver mais</button>
+      </div>
+    </div>
+
+    <button id="compareBtn" class="compare-btn">Comparar Perfis Selecionados</button>
+  </div>
+</section>
+<div class="container">
+  <a href="../index.html" class="btn voltar">Voltar</a>
+</div>
+
+  </main>  <footer>
+    <div class="container">
+      <p>&copy; 2025 - Site feito por Mateus para a Feira de Ciências</p>
+    </div>
+  </footer>  <!-- Modal -->  <div id="modalComparacao">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Comparação de Perfis</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr><th>Nome</th><th>Idade</th><th>Profissão</th><th>Rastro Ecológico</th></tr>
+        </thead>
+        <tbody id="comparisonBody"></tbody>
+      </table>
+      <canvas id="planetChart" width="400" height="200"></canvas>
+    </div>
+  </div>  <script>
+    const cards = document.querySelectorAll('.card');
+    const compareBtn = document.getElementById('compareBtn');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('selected');
         updateComparison();
       });
     });
 
     function updateComparison() {
-      // Lógica para comparar perfis selecionados
       const selected = document.querySelectorAll('.card.selected');
-      if(selected.length > 1) {
-        // Mostrar comparação entre os perfis selecionados
-      }
+      compareBtn.classList.toggle('show', selected.length >= 2);
     }
-  </script>
-</body>
+
+    document.querySelectorAll('.toggle-desc').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const desc = btn.previousElementSibling;
+        desc.classList.toggle('show');
+        btn.textContent = desc.classList.contains('show') ? 'Ver menos' : 'Ver mais';
+      });
+    });
+
+    compareBtn.addEventListener('click', () => {
+      const selected = document.querySelectorAll('.card.selected');
+      const body = document.getElementById('comparisonBody');
+      body.innerHTML = '';
+
+      let nomes = [], planetas = [];
+      selected.forEach(card => {
+        const nome = card.querySelector('h3').childNodes[0].textContent.trim();
+        const idade = card.querySelector('p:nth-of-type(1)').textContent.split(':')[1].trim();
+        const profissao = card.querySelector('p:nth-of-type(2)').textContent.split(':')[1].trim();
+        const rastroTexto = card.querySelector('.footprint').textContent;
+        const planeta = parseFloat(rastroTexto.match(/([\d.,]+) planet/)[1].replace(',', '.'));
+        nomes.push(nome);
+        planetas.push(planeta);
+        body.innerHTML += `<tr><td>${nome}</td><td>${idade}</td><td>${profissao}</td><td>${planeta} 🌍</td></tr>`;
+      });
+
+      document.getElementById('modalComparacao').style.display = 'flex';
+
+      const ctx = document.getElementById('planetChart').getContext('2d');
+      if (window.planetChart) window.planetChart.destroy();
+      window.planetChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: nomes,
+          datasets: [{
+            label: 'Nº de Planetas Consumidos',
+            data: planetas,
+            backgroundColor: ['#4CAF50', '#FFC107', '#F44336']
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, max: 5 }
+          }
+        }
+      });
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', () => {
+      document.getElementById('modalComparacao').style.display = 'none';
+    });
+  </script></body>
 </html>
