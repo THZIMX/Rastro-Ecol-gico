@@ -1,74 +1,38 @@
-<!DOCTYPE html><html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rastro Ecológico</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-    <style>
-      body {
-        font-family: 'Poppins', sans-serif;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-100 text-gray-800">
-    <!-- Navbar -->
-    <header class="fixed top-0 w-full bg-green-800 text-white shadow-md z-50">
-      <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-5">
-        <h1 class="text-2xl font-semibold">Rastro Ecológico</h1>
-        <nav class="hidden md:flex space-x-6">
-          <a href="#sobre" class="hover:text-green-300 transition">Sobre</a>
-          <a href="#servicos" class="hover:text-green-300 transition">Serviços</a>
-          <a href="#contato" class="hover:text-green-300 transition">Contato</a>
-        </nav>
-      </div>
-    </header><!-- Hero Section -->
-<section class="pt-28 bg-cover bg-center text-white text-center px-4" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSPQDgb2aGeTHCPeTHh6oYatyRQFptdvRP2_2dt2naaY8jT9vFiqePEBQ&s=10');">
-  <div class="max-w-3xl mx-auto">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Construindo um futuro mais verde</h1>
-    <p class="text-lg md:text-xl mb-6 drop-shadow-md">Descubra como pequenas mudanças geram grandes impactos.</p>
-    <a href="#cards" class="inline-block bg-green-900 hover:bg-green-700 transition px-6 py-3 rounded text-white font-medium">Saiba mais</a>
-  </div>
-</section>
+/* Tailwind substitui a maioria desses estilos, mas aqui vai uma versão adaptada para quem ainda quer ter um style.css externo com complementos personalizados */
 
-<!-- Cards -->
-<section id="cards" class="py-20 px-4 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-  <div class="bg-white p-6 rounded-lg shadow-md text-center transition transform hover:-translate-y-1">
-    <h3 class="text-xl font-semibold mb-2">Consumo consciente</h3>
-    <p class="text-gray-600">Aprenda a consumir de forma inteligente e reduzir seu impacto no planeta.</p>
-  </div>
-  <div class="bg-white p-6 rounded-lg shadow-md text-center transition transform hover:-translate-y-1">
-    <h3 class="text-xl font-semibold mb-2">Pegada ecológica</h3>
-    <p class="text-gray-600">Entenda o que é e como calcular a sua pegada ecológica.</p>
-  </div>
-  <div class="bg-white p-6 rounded-lg shadow-md text-center transition transform hover:-translate-y-1">
-    <h3 class="text-xl font-semibold mb-2">Ações sustentáveis</h3>
-    <p class="text-gray-600">Descubra pequenas atitudes que fazem uma grande diferença.</p>
-  </div>
-</section>
+@tailwind base; @tailwind components; @tailwind utilities;
 
-<!-- Icon Row -->
-<section class="bg-white py-12 px-4">
-  <div class="max-w-5xl mx-auto flex flex-wrap justify-center gap-8">
-    <div class="w-32 text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909736.png" alt="Icone 1" class="w-12 h-12 mx-auto mb-2">
-      <p class="font-medium">Plantas</p>
-    </div>
-    <div class="w-32 text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909818.png" alt="Icone 2" class="w-12 h-12 mx-auto mb-2">
-      <p class="font-medium">Reciclagem</p>
-    </div>
-    <div class="w-32 text-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909785.png" alt="Icone 3" class="w-12 h-12 mx-auto mb-2">
-      <p class="font-medium">Energia</p>
-    </div>
-  </div>
-</section>
+/* Estilos adicionais personalizados */
 
-<!-- Footer -->
-<footer class="bg-green-800 text-white text-center py-4">
-  <p>&copy; 2025 Rastro Ecológico. Todos os direitos reservados.</p>
-</footer>
+body { @apply font-[Poppins] bg-gray-100 text-gray-800; }
 
-  </body>
-</html>
+header { @apply fixed top-0 w-full bg-green-800 text-white shadow-md z-50; }
+
+nav a { @apply hover:text-green-300 transition; }
+
+.hero { @apply pt-28 bg-cover bg-center text-white text-center px-4; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSPQDgb2aGeTHCPeTHh6oYatyRQFptdvRP2_2dt2naaY8jT9vFiqePEBQ&s=10'); }
+
+.hero h1 { @apply text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg; }
+
+.hero p { @apply text-lg md:text-xl mb-6 drop-shadow-md; }
+
+.hero a { @apply inline-block bg-green-900 hover:bg-green-700 transition px-6 py-3 rounded text-white font-medium; }
+
+.card { @apply bg-white p-6 rounded-lg shadow-md text-center transition transform hover:-translate-y-1; }
+
+.icon-card { @apply w-32 text-center; }
+
+.icon-card img { @apply w-12 h-12 mx-auto mb-2; }
+
+.icon-card p { @apply font-medium; }
+
+footer { @apply bg-green-800 text-white text-center py-4; }
+
+/* Animações personalizadas (caso queira usar com Tailwind plugin) */ @layer utilities { .animate-slide-up { animation: slideUp 0.7s ease-out; }
+
+.animate-slide-down { animation: slideDown 0.7s ease-out; } }
+
+@keyframes slideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@keyframes slideDown { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+
