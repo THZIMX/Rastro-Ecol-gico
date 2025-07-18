@@ -1,393 +1,74 @@
-/* Reset */
+<!DOCTYPE html><html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rastro Ecológico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <header class="fixed top-0 w-full bg-green-800 text-white shadow-md z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-5">
+        <h1 class="text-2xl font-semibold">Rastro Ecológico</h1>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#sobre" class="hover:text-green-300 transition">Sobre</a>
+          <a href="#servicos" class="hover:text-green-300 transition">Serviços</a>
+          <a href="#contato" class="hover:text-green-300 transition">Contato</a>
+        </nav>
+      </div>
+    </header><!-- Hero Section -->
+<section class="pt-28 bg-cover bg-center text-white text-center px-4" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSPQDgb2aGeTHCPeTHh6oYatyRQFptdvRP2_2dt2naaY8jT9vFiqePEBQ&s=10');">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Construindo um futuro mais verde</h1>
+    <p class="text-lg md:text-xl mb-6 drop-shadow-md">Descubra como pequenas mudanças geram grandes impactos.</p>
+    <a href="#cards" class="inline-block bg-green-900 hover:bg-green-700 transition px-6 py-3 rounded text-white font-medium">Saiba mais</a>
+  </div>
+</section>
 
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Poppins', sans-serif;
-scroll-behavior: smooth;
-}
+<!-- Cards -->
+<section id="cards" class="py-20 px-4 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div class="bg-white p-6 rounded-lg shadow-md text-center transition transform hover:-translate-y-1">
+    <h3 class="text-xl font-semibold mb-2">Consumo consciente</h3>
+    <p class="text-gray-600">Aprenda a consumir de forma inteligente e reduzir seu impacto no planeta.</p>
+  </div>
+  <div class="bg-white p-6 rounded-lg shadow-md text-center transition transform hover:-translate-y-1">
+    <h3 class="text-xl font-semibold mb-2">Pegada ecológica</h3>
+    <p class="text-gray-600">Entenda o que é e como calcular a sua pegada ecológica.</p>
+  </div>
+  <div class="bg-white p-6 rounded-lg shadow-md text-center transition transform hover:-translate-y-1">
+    <h3 class="text-xl font-semibold mb-2">Ações sustentáveis</h3>
+    <p class="text-gray-600">Descubra pequenas atitudes que fazem uma grande diferença.</p>
+  </div>
+</section>
 
+<!-- Icon Row -->
+<section class="bg-white py-12 px-4">
+  <div class="max-w-5xl mx-auto flex flex-wrap justify-center gap-8">
+    <div class="w-32 text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909736.png" alt="Icone 1" class="w-12 h-12 mx-auto mb-2">
+      <p class="font-medium">Plantas</p>
+    </div>
+    <div class="w-32 text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909818.png" alt="Icone 2" class="w-12 h-12 mx-auto mb-2">
+      <p class="font-medium">Reciclagem</p>
+    </div>
+    <div class="w-32 text-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909785.png" alt="Icone 3" class="w-12 h-12 mx-auto mb-2">
+      <p class="font-medium">Energia</p>
+    </div>
+  </div>
+</section>
 
-body {
-background-color: #f4f4f4;
-color: #333;
-line-height: 1.6;
-overflow-x: hidden; / Prevê rolagem lateral torta */
-}
+<!-- Footer -->
+<footer class="bg-green-800 text-white text-center py-4">
+  <p>&copy; 2025 Rastro Ecológico. Todos os direitos reservados.</p>
+</footer>
 
-.container {
-width: 90%;
-max-width: 1200px;
-margin: 0 auto;
-padding: 20px;
-}
-
-main {
-padding-top: 100px; /* Compensar o header fixo */
-}
-
-/* Navbar */
-nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-background: #2d6a4f;
-padding: 15px 5vw;
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 1000;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-color: #fff;
-font-size: 24px;
-font-weight: 600;
-}
-
-.menu {
-list-style: none;
-display: flex;
-z-index: 1001;
-flex-wrap: wrap;
-}
-
-.menu li {
-margin: 0 15px;
-}
-
-.menu a {
-color: #fff;
-text-decoration: none;
-font-weight: 500;
-transition: color 0.3s ease;
-}
-
-.menu a:hover {
-color: #b7e4c7;
-}
-
-.menu-toggle {
-display: none;
-background: none;
-border: none;
-color: white;
-font-size: 24px;
-cursor: pointer;
-}
-
-/* Hero Section */
-.hero {
-background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSPQDgb2aGeTHCPeTHh6oYatyRQFptdvRP2_2dt2naaY8jT9vFiqePEBQ&s=10') no-repeat center center/cover;
-height: 80vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-color: #fff;
-text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-animation: fadeIn 1s ease-out;
-margin-top: 70px;
-padding: 0 20px;
-text-align: center;
-}
-
-.hero h1 {
-font-size: 40px;
-margin-bottom: 10px;
-animation: slideDown 1s ease-out;
-}
-
-.hero p {
-font-size: 18px;
-margin-bottom: 20px;
-animation: slideUp 1s ease-out;
-}
-
-.btn {
-display: inline-block;
-background: #1b4332;
-color: #fff;
-padding: 12px 20px;
-border-radius: 5px;
-text-decoration: none;
-font-size: 18px;
-transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.btn:hover {
-background: #40916c;
-transform: scale(1.05);
-}
-
-.btn.voltar {
-background: #6c757d;
-margin-top: 40px;
-display: block;
-text-align: center;
-}
-
-.btn.voltar:hover {
-background: #5a6268;
-}
-
-.cards {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 20px;
-padding: 100px 20px 50px; / ← padding mais suave e responsivo */
-}
-
-.card {
-background: #fff;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-text-align: center;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-opacity: 0;
-transform: translateY(30px);
-animation: slideUp 1s ease-out forwards;
-}
-
-.card h3 {
-font-size: 22px;
-margin-bottom: 10px;
-}
-
-.card p {
-font-size: 16px;
-margin-bottom: 15px;
-color: #555;
-}
-
-.card:hover {
-transform: translateY(-5px);
-box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* Icon Row (como “📊 Dados”) */
-.icon-row {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 20px;
-padding: 40px 10px;
-}
-
-.icon-card {
-background: #fff;
-padding: 15px;
-border-radius: 10px;
-width: 140px;
-box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-text-align: center;
-transition: transform 0.3s ease;
-}
-
-.icon-card img {
-width: 40px;
-height: 40px;
-margin-bottom: 10px;
-}
-
-.icon-card p {
-font-weight: 600;
-font-size: 16px;
-}
-
-.icon-card:hover {
-transform: translateY(-5px);
-}
-
-/* Página de Análise */
-.analysis-article {
-background: white;
-padding: 25px;
-border-radius: 10px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-margin-bottom: 40px;
-position: relative;
-}
-
-.analysis-article h3 {
-color: #2d6a4f;
-margin-bottom: 15px;
-font-size: 22px;
-}
-
-.analysis-article p {
-margin-bottom: 15px;
-line-height: 1.7;
-}
-
-.author-tag {
-position: absolute;
-top: -12px;
-right: 20px;
-background: #40916c;
-color: white;
-padding: 5px 15px;
-border-radius: 20px;
-font-size: 14px;
-font-weight: 500;
-}
-
-.image-container {
-margin: 25px 0;
-text-align: center;
-}
-
-.analysis-image {
-width: 100%;
-max-width: 600px;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-margin-bottom: 10px;
-}
-
-.image-caption {
-font-size: 14px;
-color: #666;
-font-style: italic;
-}
-
-.graph-explain {
-background: #f1f8f5;
-padding: 20px;
-border-radius: 8px;
-margin: 20px 0;
-border-left: 4px solid #2d6a4f;
-}
-
-.graph-explain .author-tag {
-background: #52b788;
-top: -12px;
-right: 15px;
-}
-
-.graph-container {
-margin: 20px 0;
-max-height: 400px;
-overflow-x: auto;
-padding: 20px;
-box-sizing: border-box;
-}
-
-.graph-container canvas {
-width: 100% !important;
-height: auto !important;
-max-height: 400px;
-}
-
-/* Footer */
-footer {
-background: #2d6a4f;
-color: #fff;
-padding: 15px;
-margin-top: 30px;
-text-align: center;
-}
-
-/* Animações */
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-
-@keyframes slideUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideDown {
-from { opacity: 0; transform: translateY(-20px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* Acessibilidade */
-:focus {
-outline: 2px solid #2d6a4f;
-outline-offset: 2px;
-}
-
-.btn:focus, .menu a:focus {
-transform: scale(1.05);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-nav {
-padding: 15px;
-flex-wrap: wrap;
-}
-
-.menu {
-display: none;
-flex-direction: column;
-width: 100%;
-position: absolute;
-top: 70px;
-left: 0;
-background: #2d6a4f;
-padding: 20px;
-}
-
-.menu.active {
-display: flex;
-}
-
-.menu li {
-margin: 10px 0;
-}
-
-.menu-toggle {
-display: block;
-}
-
-.hero h1 {
-font-size: 32px;
-padding: 0 10px;
-}
-
-.hero p {
-font-size: 16px;
-padding: 0 10px;
-}
-
-.cards {
-padding: 80px 5% 40px;
-}
-
-.analysis-article {
-padding: 20px 15px;
-}
-}
-
-@media (max-width: 480px) {
-.hero h1 {
-font-size: 28px;
-}
-
-.hero {
-height: 70vh;
-}
-
-.btn {
-padding: 10px 15px;
-font-size: 16px;
-}
-
-.author-tag {
-position: static;
-display: inline-block;
-margin-bottom: 15px;
-}
-
-.icon-card {
-width: 100%;
-max-width: 200px;
-}
-}
+  </body>
+</html>
