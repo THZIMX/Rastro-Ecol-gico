@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -142,22 +141,18 @@
         <li><a href="participantes.html">Equipe</a></li>
       </ul>
     </nav>
-  </header>
-
-  <main>
+  </header>  <main>
     <section id="perfis" class="section">
       <div class="container">
         <h2>Perfis Fictícios</h2>
-        <p>Conheça perfis com estilos de vida diferentes e veja como seus hábitos impactam o meio ambiente.</p>
-
-        <div class="perfil-cards">
-          <div class="card impacto-baixo">
-            <img src="../images/Ana.png" class="avatar" alt="Ana Clara">
-            <h3>Ana Clara <span class="tag verde">(baixo impacto)</span></h3>
-            <p><strong>Idade:</strong> 24 anos</p>
-            <p><strong>Profissão:</strong> Professora de Ecologia</p>
-            <p class="footprint">Rastro: 0,7 planeta Terra</p>
-            <div class="descricao">Vegana, nunca consome produtos de origem animal
+        <p>Conheça perfis com estilos de vida diferentes e veja como seus hábitos impactam o meio ambiente.</p><div class="perfil-cards">
+      <div class="card impacto-baixo">
+        <img src="../images/Ana.png" class="avatar" alt="Ana Clara">
+        <h3>Ana Clara <span class="tag verde">(baixo impacto)</span></h3>
+        <p><strong>Idade:</strong> 24 anos</p>
+        <p><strong>Profissão:</strong> Professora de Ecologia</p>
+        <p class="footprint">Rastro: 0,7 planeta Terra</p>
+        <div class="descricao">Vegana, nunca consome produtos de origem animal
 
 95% dos alimentos são frescos e produzidos localmente
 
@@ -174,16 +169,15 @@ Não viaja de avião
 Usa energia renovável em 75% da casa
 
 Casa energeticamente eficiente</div>
-            <button class="toggle-desc">Ver mais</button>
-          </div>
-
-          <div class="card impacto-medio">
-            <img src="../images/Diego.png" class="avatar" alt="Diego">
-            <h3>Diego <span class="tag amarelo">(impacto médio)</span></h3>
-            <p><strong>Idade:</strong> 17 anos</p>
-            <p><strong>Profissão:</strong> Estudante</p>
-            <p class="footprint">Rastro: 1,9 planeta Terra</p>
-            <div class="descricao">Consome carne ocasionalmente (2 a 3 vezes por semana)
+        <button class="toggle-desc">Ver mais</button>
+      </div>
+      <div class="card impacto-medio">
+        <img src="../images/Diego.png" class="avatar" alt="Diego">
+        <h3>Diego <span class="tag amarelo">(impacto médio)</span></h3>
+        <p><strong>Idade:</strong> 17 anos</p>
+        <p><strong>Profissão:</strong> Estudante</p>
+        <p class="footprint">Rastro: 1,9 planeta Terra</p>
+        <div class="descricao">Consome carne ocasionalmente (2 a 3 vezes por semana)
 
 43% dos alimentos são frescos e 30% são locais
 
@@ -202,16 +196,15 @@ Não viaja de avião
 45% da energia da casa é renovável
 
 Eficiência energética da casa é média</div>
-            <button class="toggle-desc">Ver mais</button>
-          </div>
-
-          <div class="card impacto-alto">
-            <img src="../images/Rafaela.png" class="avatar" alt="Rafaela">
-            <h3>Rafaela <span class="tag vermelho">(alto impacto)</span></h3>
-            <p><strong>Idade:</strong> 26 anos</p>
-            <p><strong>Profissão:</strong> Influencer</p>
-            <p class="footprint">Rastro: 4.9 planetas Terra</p>
-            <div class="descricao">Come carne quase todos os dias
+        <button class="toggle-desc">Ver mais</button>
+      </div>
+      <div class="card impacto-alto">
+        <img src="../images/Rafaela.png" class="avatar" alt="Rafaela">
+        <h3>Rafaela <span class="tag vermelho">(alto impacto)</span></h3>
+        <p><strong>Idade:</strong> 26 anos</p>
+        <p><strong>Profissão:</strong> Influencer</p>
+        <p class="footprint">Rastro: 4.9 planetas Terra</p>
+        <div class="descricao">Come carne quase todos os dias
 
 Apenas 20% dos alimentos são frescos e produzidos localmente
 
@@ -230,26 +223,22 @@ Viaja de avião cerca de 15h por ano
 25% da energia da casa é renovável
 
 A casa tem eficiência energética acima da média</div>
-            <button class="toggle-desc">Ver mais</button>
-          </div>
-        </div>
-
-        <button id="compareBtn" class="compare-btn">Comparar Perfis Selecionados</button>
+        <button class="toggle-desc">Ver mais</button>
       </div>
-    </section>
-
-    <div class="container">
-      <a href="../index.html" class="btn voltar">Voltar</a>
     </div>
-  </main>
 
-  <footer>
+    <button id="compareBtn" class="compare-btn">Comparar Perfis Selecionados</button>
+  </div>
+</section>
+<div class="container">
+  <a href="../index.html" class="btn voltar">Voltar</a>
+</div>
+
+  </main>  <footer>
     <div class="container">
       <p>&copy; 2025 - Site feito por Mateus para a Feira de Ciências</p>
     </div>
-  </footer>
-
-  <div id="modalComparacao">
+  </footer>  <!-- Modal -->  <div id="modalComparacao">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
       <h2>Comparação de Perfis</h2>
@@ -261,9 +250,7 @@ A casa tem eficiência energética acima da média</div>
       </table>
       <canvas id="planetChart" width="400" height="200"></canvas>
     </div>
-  </div>
-
-  <script>
+  </div>  <script>
     const cards = document.querySelectorAll('.card');
     const compareBtn = document.getElementById('compareBtn');
 
@@ -330,6 +317,5 @@ A casa tem eficiência energética acima da média</div>
     document.querySelector('.close-btn').addEventListener('click', () => {
       document.getElementById('modalComparacao').style.display = 'none';
     });
-  </script>
-</body>
+  </script></body>
 </html>
