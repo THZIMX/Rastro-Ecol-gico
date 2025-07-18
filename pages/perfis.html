@@ -7,8 +7,125 @@
   <link rel="stylesheet" href="../css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    /* [Estilos mantidos, sem alterações aqui] */
-    /* ... seus estilos completos aqui ... */
+    .perfil-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 1.5rem;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #e0e0e0;
+      margin-bottom: 1rem;
+    }
+    .footprint {
+      font-weight: bold;
+      color: #333;
+      margin: 0.5rem 0;
+    }
+    .descricao {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0.8rem;
+      display: none;
+    }
+    .descricao.show {
+      display: block;
+    }
+    .impacto-baixo { border-top: 6px solid #4CAF50; }
+    .impacto-medio { border-top: 6px solid #FFC107; }
+    .impacto-alto { border-top: 6px solid #F44336; }
+    .tag { font-weight: bold; font-size: 0.9rem; }
+    .tag.verde { color: #4CAF50; }
+    .tag.amarelo { color: #FFC107; }
+    .tag.vermelho { color: #F44336; }
+    .toggle-desc {
+      margin-top: 0.8rem;
+      background: #f0f0f0;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .toggle-desc:hover {
+      background: #e0e0e0;
+    }
+    .compare-btn {
+      display: none;
+      margin: 2rem auto;
+      background: #2196F3;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .compare-btn.show {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .perfil-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .selected {
+      box-shadow: 0 0 0 3px #2196F3;
+    }
+    #modalComparacao {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none; justify-content: center; align-items: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%; max-width: 700px;
+      text-align: center;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 12px; right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #888;
+      cursor: pointer;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 2rem;
+    }
+    .comparison-table th, .comparison-table td {
+      border: 1px solid #ddd;
+      padding: 0.6rem;
+    }
+    .comparison-table th {
+      background-color: #f4f4f4;
+    }
   </style>
 </head>
 <body>
@@ -26,15 +143,16 @@
       </ul>
     </nav>
   </header>
+
   <main>
     <section id="perfis" class="section">
       <div class="container">
         <h2>Perfis Fictícios</h2>
         <p>Conheça perfis com estilos de vida diferentes e veja como seus hábitos impactam o meio ambiente.</p>
-        
+
         <div class="perfil-cards">
           <div class="card impacto-baixo">
-            <img src="../imagens/ana.png" class="avatar" alt="Ana Clara">
+            <img src="../images/Ana.png" class="avatar" alt="Ana Clara">
             <h3>Ana Clara <span class="tag verde">(baixo impacto)</span></h3>
             <p><strong>Idade:</strong> 24 anos</p>
             <p><strong>Profissão:</strong> Professora de Ecologia</p>
@@ -60,7 +178,7 @@ Casa energeticamente eficiente</div>
           </div>
 
           <div class="card impacto-medio">
-            <img src="../imagens/diego.png" class="avatar" alt="Diego">
+            <img src="../images/Diego.png" class="avatar" alt="Diego">
             <h3>Diego <span class="tag amarelo">(impacto médio)</span></h3>
             <p><strong>Idade:</strong> 17 anos</p>
             <p><strong>Profissão:</strong> Estudante</p>
@@ -88,7 +206,7 @@ Eficiência energética da casa é média</div>
           </div>
 
           <div class="card impacto-alto">
-            <img src="../imagens/rafaela.png" class="avatar" alt="Rafaela">
+            <img src="../images/Rafaela.png" class="avatar" alt="Rafaela">
             <h3>Rafaela <span class="tag vermelho">(alto impacto)</span></h3>
             <p><strong>Idade:</strong> 26 anos</p>
             <p><strong>Profissão:</strong> Influencer</p>
@@ -131,7 +249,6 @@ A casa tem eficiência energética acima da média</div>
     </div>
   </footer>
 
-  <!-- Modal -->
   <div id="modalComparacao">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
