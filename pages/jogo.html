@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo Ecológico</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #d7f9d7, #e2ffe2);
+      padding: 20px;
+      color: #2e4d2e;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+
+    .options li {
+      background: #e0ffe0;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .options li:hover {
+      background: #b7eeb7;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌱 Quiz Ecológico</h1>
+    <div class="question" id="question">Carregando...</div>
+    <ul class="options" id="options"></ul>
+    <div class="result" id="result"></div>
+    <button onclick="nextQuestion()">Próxima Pergunta</button>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "Qual é a principal causa do aquecimento global?",
+        options: ["Desmatamento", "Queima de combustíveis fósseis", "Uso de energia solar", "Reciclagem"],
+        answer: 1
+      },
+      {
+        question: "Qual desses materiais é reciclável?",
+        options: ["Plástico", "Comida", "Cigarro", "Óleo usado"],
+        answer: 0
+      },
+      {
+        question: "Qual é a forma mais sustentável de se locomover?",
+        options: ["Avião", "Carro", "Bicicleta", "Moto"],
+        answer: 2
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById('question').innerText = q.question;
+      const optionsList = document.getElementById('options');
+      optionsList.innerHTML = '';
+      q.options.forEach((opt, i) => {
+        const li = document.createElement('li');
+        li.innerText = opt;
+        li.onclick = () => checkAnswer(i);
+        optionsList.appendChild(li);
+      });
+      document.getElementById('result').innerText = '';
+    }
+
+    function checkAnswer(selected) {
+      const q = questions[currentQuestion];
+      const result = document.getElementById('result');
+      if (selected === q.answer) {
+        result.innerText = "✅ Correto! Muito bem!";
+        result.style.color = 'green';
+      } else {
+        result.innerText = `❌ Errado! A resposta correta é: ${q.options[q.answer]}`;
+        result.style.color = 'red';
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion >= questions.length) {
+        document.getElementById('question').innerText = "Fim do jogo! 🌎";
+        document.getElementById('options').innerHTML = "";
+        document.getElementById('result').innerText = "Obrigado por jogar!";
+      } else {
+        loadQuestion();
+      }
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
