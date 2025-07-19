@@ -2,155 +2,210 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jogo Ecológico - Pegada Ecológica</title>
-  <link rel="stylesheet" href="../css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Ecológico</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      background: linear-gradient(135deg, #e6f2e6, #f4f9f4);
+      color: #2e4d2e;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
     .quiz-container {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .quiz-container h2 {
-      margin-bottom: 1rem;
-    }
-    .pergunta {
-      margin-bottom: 2rem;
-    }
-    .opcao {
-      display: block;
-      margin: 0.5rem 0;
-    }
-    .btn {
-      background: #4CAF50;
-      color: white;
-      padding: 0.7rem 1.2rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .btn:hover {
-      background: #43a047;
-    }
-    .resultado {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
       text-align: center;
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      font-weight: bold;
     }
-    .voltar {
-      margin-top: 2rem;
-      display: inline-block;
-      background: #2196F3;
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .answers button {
+      background: #cfe9cf;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      margin: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .answers button:hover {
+      background: #b2d8b2;
+    }
+
+    .answers button.correct {
+      background: #a4e0a4;
+    }
+
+    .answers button.incorrect {
+      background: #f2b8b5;
+    }
+
+    #next-btn, #back-btn {
+      margin-top: 20px;
+      background-color: #2e4d2e;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #next-btn:hover, #back-btn:hover {
+      background-color: #1f331f;
+    }
+
+    #back-btn {
+      margin-right: 10px;
+      background-color: #777;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">👣 Pegada Ecológica</div>
-      <button class="menu-toggle">☰</button>
-      <ul class="menu">
-        <li><a href="../index.html">Início</a></li>
-        <li><a href="diagnostico.html">Diagnóstico</a></li>
-        <li><a href="dados.html">Dados</a></li>
-        <li><a href="perfis.html">Perfis</a></li>
-        <li><a href="analise.html">Análise</a></li>
-        <li><a href="participantes.html">Equipe</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="quiz-container">
-      <h2>Jogo Ecológico 🌱</h2>
-      <form id="quizForm">
-        <div class="pergunta">
-          <p>1. Com que frequência você come carne vermelha?</p>
-          <label><input type="radio" name="q1" value="3" class="opcao"> Todos os dias</label>
-          <label><input type="radio" name="q1" value="2"> Algumas vezes por semana</label>
-          <label><input type="radio" name="q1" value="1"> Raramente</label>
-          <label><input type="radio" name="q1" value="0"> Nunca</label>
-        </div>
-
-        <div class="pergunta">
-          <p>2. Quantos minutos duram seus banhos?</p>
-          <label><input type="radio" name="q2" value="3" class="opcao"> Mais de 15 minutos</label>
-          <label><input type="radio" name="q2" value="2"> Entre 10 e 15 minutos</label>
-          <label><input type="radio" name="q2" value="1"> Menos de 10 minutos</label>
-          <label><input type="radio" name="q2" value="0"> Menos de 5 minutos</label>
-        </div>
-
-        <div class="pergunta">
-          <p>3. Qual o seu meio de transporte principal?</p>
-          <label><input type="radio" name="q3" value="3"> Carro sozinho(a)</label>
-          <label><input type="radio" name="q3" value="2"> Transporte público</label>
-          <label><input type="radio" name="q3" value="1"> Bicicleta</label>
-          <label><input type="radio" name="q3" value="0"> Caminhada</label>
-        </div>
-
-        <div class="pergunta">
-          <p>4. Você separa o lixo corretamente?</p>
-          <label><input type="radio" name="q4" value="0"> Sempre</label>
-          <label><input type="radio" name="q4" value="1"> Às vezes</label>
-          <label><input type="radio" name="q4" value="2"> Raramente</label>
-          <label><input type="radio" name="q4" value="3"> Nunca</label>
-        </div>
-
-        <div class="pergunta">
-          <p>5. Com que frequência você compra roupas novas?</p>
-          <label><input type="radio" name="q5" value="3"> Toda semana</label>
-          <label><input type="radio" name="q5" value="2"> Uma vez por mês</label>
-          <label><input type="radio" name="q5" value="1"> Algumas vezes por ano</label>
-          <label><input type="radio" name="q5" value="0"> Quase nunca</label>
-        </div>
-
-        <button type="submit" class="btn">Ver Resultado</button>
-      </form>
-
-      <div id="resultado" class="resultado"></div>
-
-      <a href="../index.html" class="btn voltar">Voltar</a>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 - Site feito por Mateus para a Feira de Ciências</p>
+  <div class="quiz-container">
+    <h1>Quiz Ecológico 🌱</h1>
+    <div id="question-container">
+      <p class="question" id="question">Carregando pergunta...</p>
+      <div class="answers" id="answer-buttons"></div>
     </div>
-  </footer>
+    <button id="next-btn" class="hidden">Próxima</button>
+    <br />
+    <button id="back-btn" onclick="window.history.back()">⬅ Voltar</button>
+  </div>
 
   <script>
-    document.getElementById('quizForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const respostas = [...new FormData(this).values()].map(Number);
-      if (respostas.length < 5) {
-        document.getElementById('resultado').textContent = 'Responda todas as perguntas!';
-        return;
+    const questions = [
+      {
+        question: "O que é a pegada ecológica?",
+        answers: [
+          { text: "A marca do seu sapato", correct: false },
+          { text: "A quantidade de natureza que usamos para viver", correct: true },
+          { text: "Tipo de solo", correct: false }
+        ]
+      },
+      {
+        question: "Qual dessas ações ajuda a reduzir a pegada ecológica?",
+        answers: [
+          { text: "Consumir menos carne", correct: true },
+          { text: "Deixar a luz acesa", correct: false },
+          { text: "Usar carro sempre", correct: false }
+        ]
+      },
+      {
+        question: "Qual dessas fontes de energia é renovável?",
+        answers: [
+          { text: "Carvão", correct: false },
+          { text: "Petróleo", correct: false },
+          { text: "Solar", correct: true }
+        ]
+      },
+      {
+        question: "Qual é o principal gás do efeito estufa?",
+        answers: [
+          { text: "Oxigênio", correct: false },
+          { text: "Dióxido de carbono (CO₂)", correct: true },
+          { text: "Nitrogênio", correct: false }
+        ]
+      },
+      {
+        question: "O que podemos fazer com o lixo orgânico?",
+        answers: [
+          { text: "Compostagem", correct: true },
+          { text: "Reciclagem", correct: false },
+          { text: "Incinerar sempre", correct: false }
+        ]
+      },
+      {
+        question: "Qual hábito ajuda o meio ambiente?",
+        answers: [
+          { text: "Reutilizar sacolas plásticas", correct: true },
+          { text: "Desperdiçar água", correct: false },
+          { text: "Jogar lixo no chão", correct: false }
+        ]
       }
+    ];
 
-      const total = respostas.reduce((a, b) => a + b, 0);
-      let mensagem = '';
+    let currentQuestion = 0;
+    const questionEl = document.getElementById("question");
+    const answersEl = document.getElementById("answer-buttons");
+    const nextBtn = document.getElementById("next-btn");
 
-      if (total <= 4) {
-        mensagem = '🌿 Parabéns! Seu impacto ambiental é muito baixo.';
-      } else if (total <= 8) {
-        mensagem = '🙂 Seu impacto é moderado. Que tal reduzir um pouco mais?';
+    function showQuestion() {
+      resetState();
+      let q = questions[currentQuestion];
+      questionEl.textContent = q.question;
+
+      q.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.textContent = answer.text;
+        button.classList.add("btn");
+        button.addEventListener("click", () => selectAnswer(button, answer.correct));
+        answersEl.appendChild(button);
+      });
+    }
+
+    function resetState() {
+      nextBtn.classList.add("hidden");
+      while (answersEl.firstChild) {
+        answersEl.removeChild(answersEl.firstChild);
+      }
+    }
+
+    function selectAnswer(button, correct) {
+      const buttons = answersEl.children;
+      for (let btn of buttons) {
+        const isCorrect = questions[currentQuestion].answers.find(a => a.text === btn.textContent).correct;
+        btn.classList.add(isCorrect ? "correct" : "incorrect");
+        btn.disabled = true;
+      }
+      if (correct) {
+        button.classList.add("correct");
       } else {
-        mensagem = '⚠️ Atenção! Seu impacto é alto. Reveja seus hábitos!';
+        button.classList.add("incorrect");
       }
+      nextBtn.classList.remove("hidden");
+    }
 
-      document.getElementById('resultado').textContent = `Pontuação: ${total}/15 – ${mensagem}`;
+    nextBtn.addEventListener("click", () => {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        showFinalMessage();
+      }
     });
 
-    // Menu mobile
-    document.querySelector('.menu-toggle').addEventListener('click', function () {
-      document.querySelector('.menu').classList.toggle('active');
-    });
+    function showFinalMessage() {
+      resetState();
+      questionEl.textContent = "Parabéns! Você concluiu o quiz ecológico 🌍";
+      nextBtn.classList.add("hidden");
+    }
+
+    // Iniciar
+    showQuestion();
   </script>
 </body>
 </html>
