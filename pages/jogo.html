@@ -58,7 +58,7 @@
       text-align: center;
     }
 
-    .next-btn {
+    .next-btn, .back-btn {
       margin-top: 30px;
       display: block;
       padding: 12px 24px;
@@ -70,9 +70,10 @@
       cursor: pointer;
       margin-left: auto;
       margin-right: auto;
+      transition: 0.3s;
     }
 
-    .next-btn:hover {
+    .next-btn:hover, .back-btn:hover {
       background-color: #1b5e20;
     }
 
@@ -80,6 +81,13 @@
       text-align: center;
       font-size: 1.3em;
       margin-top: 40px;
+    }
+
+    .score {
+      text-align: center;
+      font-size: 1.1em;
+      color: #2e4d2e;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -90,8 +98,10 @@
     <div class="question" id="question">Carregando pergunta...</div>
     <ul class="options" id="options"></ul>
     <div class="result" id="result"></div>
-    <button class="next-btn" onclick="nextQuestion()">Próxima Pergunta</button>
+    <button class="next-btn" onclick="nextQuestion()" id="nextBtn">Próxima Pergunta</button>
     <div class="end-message" id="endMessage"></div>
+    <div class="score" id="score"></div>
+    <a href="../index.html" class="back-btn" style="display: none;" id="backBtn">⬅ Voltar para o Início</a>
   </main>
 
   <script>
@@ -164,6 +174,7 @@
     ];
 
     let index = 0;
+    let acertos = 0;
 
     function carregarPergunta() {
       const perguntaAtual = perguntas[index];
@@ -181,14 +192,20 @@
 
       document.getElementById('result').innerText = '';
       document.getElementById('endMessage').innerText = '';
+      document.getElementById('score').innerText = '';
     }
 
     function verificarResposta(escolhida) {
       const correta = perguntas[index].answer;
       const resultado = document.getElementById('result');
+      const opcoes = document.querySelectorAll('.options li');
+
+      opcoes.forEach(btn => btn.style.pointerEvents = "none");
+
       if (escolhida === correta) {
         resultado.innerText = "✅ Resposta correta!";
         resultado.style.color = "green";
+        acertos++;
       } else {
         resultado.innerText = `❌ Errado. A resposta certa é: ${perguntas[index].options[correta]}`;
         resultado.style.color = "red";
@@ -201,8 +218,11 @@
         document.getElementById('question').innerText = "";
         document.getElementById('options').innerHTML = "";
         document.getElementById('result').innerText = "";
-        document.querySelector('.next-btn').style.display = "none";
+        document.getElementById('nextBtn').style.display = "none";
+
         document.getElementById('endMessage').innerText = "🎉 Parabéns! Você completou o quiz ecológico!";
+        document.getElementById('score').innerText = `Você acertou ${acertos} de ${perguntas.length} perguntas.`;
+        document.getElementById('backBtn').style.display = "block";
       } else {
         carregarPergunta();
       }
