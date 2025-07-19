@@ -2,81 +2,76 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Quiz Ecológico</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../css/style.css" />
   <style>
-    body {
-      background: linear-gradient(135deg, #e6f2e6, #f4f9f4);
-      color: #2e4d2e;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
     .quiz-container {
-      background: white;
+      max-width: 700px;
+      margin: 50px auto;
       padding: 30px;
+      background-color: #e9f5e9;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
     .question {
-      font-size: 20px;
-      margin-bottom: 15px;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #2e4d2e;
     }
 
     .answers button {
-      background: #cfe9cf;
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      width: 100%;
       border: none;
-      padding: 12px 20px;
-      border-radius: 12px;
-      margin: 8px;
+      border-radius: 10px;
+      background-color: #bde5bd;
       cursor: pointer;
-      transition: background 0.3s;
-      font-size: 16px;
+      transition: background-color 0.3s;
+      font-weight: 500;
     }
 
     .answers button:hover {
-      background: #b2d8b2;
+      background-color: #9ddc9d;
     }
 
-    .answers button.correct {
-      background: #a4e0a4;
-    }
-
-    .answers button.incorrect {
-      background: #f2b8b5;
-    }
-
-    #next-btn, #back-btn {
+    #next-btn {
       margin-top: 20px;
-      background-color: #2e4d2e;
+      background-color: #2e7d32;
       color: white;
+      padding: 12px 20px;
       border: none;
-      padding: 10px 18px;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s;
+      font-weight: bold;
     }
 
-    #next-btn:hover, #back-btn:hover {
-      background-color: #1f331f;
+    #next-btn:hover {
+      background-color: #27682a;
     }
 
-    #back-btn {
-      margin-right: 10px;
-      background-color: #777;
+    .btn-voltar {
+      display: inline-block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #2e4d2e;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn-voltar:hover {
+      background-color: #1c321c;
+    }
+
+    .feedback {
+      margin-top: 15px;
+      font-weight: bold;
     }
 
     .hidden {
@@ -86,105 +81,199 @@
 </head>
 <body>
   <div class="quiz-container">
-    <h1>Quiz Ecológico 🌱</h1>
-    <div id="question-container">
-      <p class="question" id="question">Carregando pergunta...</p>
-      <div class="answers" id="answer-buttons"></div>
-    </div>
-    <button id="next-btn" class="hidden">Próxima</button>
-    <br />
-    <button id="back-btn" onclick="window.history.back()">⬅ Voltar</button>
+    <a href="index.html" class="btn-voltar">← Voltar</a>
+    <h2 class="question" id="question">Carregando pergunta...</h2>
+    <div class="answers" id="answers"></div>
+    <p class="feedback" id="feedback"></p>
+    <button id="next-btn" class="hidden">Próxima pergunta</button>
   </div>
 
   <script>
     const questions = [
       {
-        question: "O que é a pegada ecológica?",
+        question: "O que é pegada ecológica?",
         answers: [
-          { text: "A marca do seu sapato", correct: false },
-          { text: "A quantidade de natureza que usamos para viver", correct: true },
-          { text: "Tipo de solo", correct: false }
+          { text: "O tamanho da sua casa", correct: false },
+          { text: "Impacto do consumo humano sobre o meio ambiente", correct: true },
+          { text: "Número de passos diários", correct: false },
+          { text: "Distância de uma cidade à floresta", correct: false }
         ]
       },
       {
-        question: "Qual dessas ações ajuda a reduzir a pegada ecológica?",
+        question: "Qual das ações ajuda a reduzir sua pegada ecológica?",
         answers: [
-          { text: "Consumir menos carne", correct: true },
-          { text: "Deixar a luz acesa", correct: false },
-          { text: "Usar carro sempre", correct: false }
+          { text: "Comer mais carne vermelha", correct: false },
+          { text: "Desperdiçar água", correct: false },
+          { text: "Usar transporte público", correct: true },
+          { text: "Deixar a TV ligada o dia todo", correct: false }
         ]
       },
       {
-        question: "Qual dessas fontes de energia é renovável?",
+        question: "Qual é a energia mais sustentável?",
         answers: [
           { text: "Carvão", correct: false },
           { text: "Petróleo", correct: false },
-          { text: "Solar", correct: true }
+          { text: "Solar", correct: true },
+          { text: "Nuclear", correct: false }
         ]
       },
       {
-        question: "Qual é o principal gás do efeito estufa?",
+        question: "Qual objeto é reciclável?",
+        answers: [
+          { text: "Papelão", correct: true },
+          { text: "Guardanapo usado", correct: false },
+          { text: "Espelho quebrado", correct: false },
+          { text: "Bituca de cigarro", correct: false }
+        ]
+      },
+      {
+        question: "O que significa 'desmatamento'?",
+        answers: [
+          { text: "Plantar árvores", correct: false },
+          { text: "Queimadas controladas", correct: false },
+          { text: "Corte de vegetação de forma não sustentável", correct: true },
+          { text: "Criação de florestas", correct: false }
+        ]
+      },
+      {
+        question: "Qual atitude mais ajuda o meio ambiente?",
+        answers: [
+          { text: "Andar de carro sozinho", correct: false },
+          { text: "Separar o lixo corretamente", correct: true },
+          { text: "Tomar banhos longos", correct: false },
+          { text: "Usar copos descartáveis", correct: false }
+        ]
+      },
+      {
+        question: "Quantos litros de água são gastos num banho de 15 minutos?",
+        answers: [
+          { text: "10 litros", correct: false },
+          { text: "45 litros", correct: false },
+          { text: "135 litros", correct: true },
+          { text: "300 litros", correct: false }
+        ]
+      },
+      {
+        question: "Qual das opções NÃO é fonte renovável?",
+        answers: [
+          { text: "Energia eólica", correct: false },
+          { text: "Energia solar", correct: false },
+          { text: "Petróleo", correct: true },
+          { text: "Hidrelétrica", correct: false }
+        ]
+      },
+      {
+        question: "Qual gás é o principal responsável pelo efeito estufa?",
         answers: [
           { text: "Oxigênio", correct: false },
-          { text: "Dióxido de carbono (CO₂)", correct: true },
-          { text: "Nitrogênio", correct: false }
+          { text: "Hidrogênio", correct: false },
+          { text: "Gás Carbônico (CO2)", correct: true },
+          { text: "Ozônio", correct: false }
         ]
       },
       {
-        question: "O que podemos fazer com o lixo orgânico?",
+        question: "O que é compostagem?",
         answers: [
-          { text: "Compostagem", correct: true },
-          { text: "Reciclagem", correct: false },
-          { text: "Incinerar sempre", correct: false }
+          { text: "Processo de aquecimento de plásticos", correct: false },
+          { text: "Transformação de resíduos orgânicos em adubo", correct: true },
+          { text: "Refrigeração de alimentos", correct: false },
+          { text: "Estocagem de lixo reciclável", correct: false }
         ]
       },
       {
-        question: "Qual hábito ajuda o meio ambiente?",
+        question: "Qual material demora mais para se decompor?",
         answers: [
-          { text: "Reutilizar sacolas plásticas", correct: true },
-          { text: "Desperdiçar água", correct: false },
-          { text: "Jogar lixo no chão", correct: false }
+          { text: "Papel", correct: false },
+          { text: "Vidro", correct: true },
+          { text: "Alumínio", correct: false },
+          { text: "Casca de fruta", correct: false }
+        ]
+      },
+      {
+        question: "Qual é o bioma mais ameaçado do Brasil?",
+        answers: [
+          { text: "Caatinga", correct: false },
+          { text: "Pantanal", correct: false },
+          { text: "Mata Atlântica", correct: true },
+          { text: "Pampa", correct: false }
+        ]
+      },
+      {
+        question: "Quantos planetas seriam necessários se todos vivessem como um americano médio?",
+        answers: [
+          { text: "1", correct: false },
+          { text: "1.5", correct: false },
+          { text: "5", correct: true },
+          { text: "2", correct: false }
+        ]
+      },
+      {
+        question: "Qual das opções é mais ecológica?",
+        answers: [
+          { text: "Comprar roupas novas toda semana", correct: false },
+          { text: "Reutilizar sacolas", correct: true },
+          { text: "Usar descartáveis", correct: false },
+          { text: "Lavar o carro com mangueira", correct: false }
+        ]
+      },
+      {
+        question: "Qual atitude economiza mais energia?",
+        answers: [
+          { text: "Usar ar-condicionado sempre", correct: false },
+          { text: "Apagar luzes desnecessárias", correct: true },
+          { text: "Manter aparelhos em stand-by", correct: false },
+          { text: "Deixar computador ligado o dia todo", correct: false }
+        ]
+      },
+      {
+        question: "Por que devemos cuidar da biodiversidade?",
+        answers: [
+          { text: "Para termos mais decoração", correct: false },
+          { text: "Porque tudo está interligado e afeta o equilíbrio", correct: true },
+          { text: "Porque é bonito", correct: false },
+          { text: "Para termos pets diferentes", correct: false }
+        ]
+      },
+      {
+        question: "O que são ilhas de calor nas cidades?",
+        answers: [
+          { text: "Praias urbanas", correct: false },
+          { text: "Áreas de calor causadas por falta de vegetação e excesso de concreto", correct: true },
+          { text: "Locais para pegar sol", correct: false },
+          { text: "Regiões de deserto", correct: false }
         ]
       }
     ];
 
     let currentQuestion = 0;
-    const questionEl = document.getElementById("question");
-    const answersEl = document.getElementById("answer-buttons");
-    const nextBtn = document.getElementById("next-btn");
+
+    const questionElement = document.getElementById('question');
+    const answersElement = document.getElementById('answers');
+    const nextBtn = document.getElementById('next-btn');
+    const feedback = document.getElementById('feedback');
 
     function showQuestion() {
-      resetState();
-      let q = questions[currentQuestion];
-      questionEl.textContent = q.question;
+      const q = questions[currentQuestion];
+      questionElement.textContent = q.question;
+      answersElement.innerHTML = '';
+      feedback.textContent = '';
+      nextBtn.classList.add("hidden");
 
-      q.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.textContent = answer.text;
-        button.classList.add("btn");
-        button.addEventListener("click", () => selectAnswer(button, answer.correct));
-        answersEl.appendChild(button);
+      q.answers.forEach((answer, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = answer.text;
+        btn.addEventListener("click", () => selectAnswer(answer.correct));
+        answersElement.appendChild(btn);
       });
     }
 
-    function resetState() {
-      nextBtn.classList.add("hidden");
-      while (answersEl.firstChild) {
-        answersEl.removeChild(answersEl.firstChild);
-      }
-    }
-
-    function selectAnswer(button, correct) {
-      const buttons = answersEl.children;
-      for (let btn of buttons) {
-        const isCorrect = questions[currentQuestion].answers.find(a => a.text === btn.textContent).correct;
-        btn.classList.add(isCorrect ? "correct" : "incorrect");
-        btn.disabled = true;
-      }
+    function selectAnswer(correct) {
       if (correct) {
-        button.classList.add("correct");
+        feedback.textContent = "✅ Correto!";
+        feedback.style.color = "green";
       } else {
-        button.classList.add("incorrect");
+        feedback.textContent = "❌ Incorreto.";
+        feedback.style.color = "red";
       }
       nextBtn.classList.remove("hidden");
     }
@@ -194,17 +283,13 @@
       if (currentQuestion < questions.length) {
         showQuestion();
       } else {
-        showFinalMessage();
+        questionElement.textContent = "🎉 Você completou o quiz!";
+        answersElement.innerHTML = "";
+        feedback.textContent = "";
+        nextBtn.classList.add("hidden");
       }
     });
 
-    function showFinalMessage() {
-      resetState();
-      questionEl.textContent = "Parabéns! Você concluiu o quiz ecológico 🌍";
-      nextBtn.classList.add("hidden");
-    }
-
-    // Iniciar
     showQuestion();
   </script>
 </body>
