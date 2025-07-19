@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jogo Ecológico</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #d7f9d7, #e2ffe2);
-      padding: 20px;
+    main {
+      max-width: 800px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .quiz-title {
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 30px;
       color: #2e4d2e;
     }
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
     .question {
-      font-size: 1.2em;
-      margin-bottom: 15px;
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      color: #2e4d2e;
     }
 
     .options {
       list-style: none;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .options li {
       background: #e0ffe0;
-      margin-bottom: 10px;
-      padding: 10px;
+      padding: 12px 18px;
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.3s;
+      font-weight: 500;
     }
 
     .options li:hover {
@@ -51,97 +53,162 @@
 
     .result {
       margin-top: 20px;
-      font-weight: bold;
       font-size: 1.1em;
+      font-weight: bold;
       text-align: center;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #2e7d32;
+    .next-btn {
+      margin-top: 30px;
+      display: block;
+      padding: 12px 24px;
+      background-color: #2e7d32;
       color: white;
       border: none;
       border-radius: 10px;
+      font-size: 1em;
       cursor: pointer;
-      display: block;
       margin-left: auto;
       margin-right: auto;
     }
 
-    button:hover {
-      background: #1b5e20;
+    .next-btn:hover {
+      background-color: #1b5e20;
+    }
+
+    .end-message {
+      text-align: center;
+      font-size: 1.3em;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🌱 Quiz Ecológico</h1>
-    <div class="question" id="question">Carregando...</div>
+
+  <main>
+    <div class="quiz-title">🌱 Jogo Ecológico - Teste seus conhecimentos</div>
+    <div class="question" id="question">Carregando pergunta...</div>
     <ul class="options" id="options"></ul>
     <div class="result" id="result"></div>
-    <button onclick="nextQuestion()">Próxima Pergunta</button>
-  </div>
+    <button class="next-btn" onclick="nextQuestion()">Próxima Pergunta</button>
+    <div class="end-message" id="endMessage"></div>
+  </main>
 
   <script>
-    const questions = [
+    const perguntas = [
       {
-        question: "Qual é a principal causa do aquecimento global?",
-        options: ["Desmatamento", "Queima de combustíveis fósseis", "Uso de energia solar", "Reciclagem"],
+        question: "Qual dessas atitudes mais contribui para a sustentabilidade?",
+        options: ["Desperdiçar água", "Usar bicicleta", "Comprar roupas todo mês", "Jogar lixo no rio"],
         answer: 1
       },
       {
-        question: "Qual desses materiais é reciclável?",
-        options: ["Plástico", "Comida", "Cigarro", "Óleo usado"],
+        question: "Qual é uma fonte de energia renovável?",
+        options: ["Carvão", "Petróleo", "Energia solar", "Gás natural"],
+        answer: 2
+      },
+      {
+        question: "Qual material é reciclável?",
+        options: ["Vidro", "Restos de comida", "Bituca de cigarro", "Papel higiênico usado"],
         answer: 0
       },
       {
-        question: "Qual é a forma mais sustentável de se locomover?",
-        options: ["Avião", "Carro", "Bicicleta", "Moto"],
+        question: "O que significa 'pegada ecológica'?",
+        options: [
+          "Quantidade de lixo que produzimos",
+          "Impacto do nosso consumo sobre os recursos naturais",
+          "Quantidade de CO2 que respiramos",
+          "Tamanho da nossa casa"
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual atitude reduz o consumo de energia em casa?",
+        options: [
+          "Deixar luzes acesas",
+          "Usar chuveiro por 30 minutos",
+          "Trocar lâmpadas por LED",
+          "Assistir TV o dia todo"
+        ],
+        answer: 2
+      },
+      {
+        question: "Qual hábito ajuda a economizar água?",
+        options: [
+          "Escovar os dentes com a torneira aberta",
+          "Reutilizar água da máquina para lavar calçada",
+          "Tomar banhos longos",
+          "Lavar o carro com mangueira"
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual desses meios de transporte polui menos?",
+        options: [
+          "Carro",
+          "Avião",
+          "Bicicleta",
+          "Ônibus"
+        ],
+        answer: 2
+      },
+      {
+        question: "Plantar árvores ajuda a:",
+        options: [
+          "Aumentar a poluição",
+          "Destruir o solo",
+          "Capturar CO₂ e melhorar o ar",
+          "Diminuir o oxigênio"
+        ],
         answer: 2
       }
     ];
 
-    let currentQuestion = 0;
+    let index = 0;
 
-    function loadQuestion() {
-      const q = questions[currentQuestion];
-      document.getElementById('question').innerText = q.question;
+    function carregarPergunta() {
+      const perguntaAtual = perguntas[index];
+      document.getElementById('question').innerText = perguntaAtual.question;
+
       const optionsList = document.getElementById('options');
       optionsList.innerHTML = '';
-      q.options.forEach((opt, i) => {
+
+      perguntaAtual.options.forEach((opcao, i) => {
         const li = document.createElement('li');
-        li.innerText = opt;
-        li.onclick = () => checkAnswer(i);
+        li.innerText = opcao;
+        li.onclick = () => verificarResposta(i);
         optionsList.appendChild(li);
       });
+
       document.getElementById('result').innerText = '';
+      document.getElementById('endMessage').innerText = '';
     }
 
-    function checkAnswer(selected) {
-      const q = questions[currentQuestion];
-      const result = document.getElementById('result');
-      if (selected === q.answer) {
-        result.innerText = "✅ Correto! Muito bem!";
-        result.style.color = 'green';
+    function verificarResposta(escolhida) {
+      const correta = perguntas[index].answer;
+      const resultado = document.getElementById('result');
+      if (escolhida === correta) {
+        resultado.innerText = "✅ Resposta correta!";
+        resultado.style.color = "green";
       } else {
-        result.innerText = `❌ Errado! A resposta correta é: ${q.options[q.answer]}`;
-        result.style.color = 'red';
+        resultado.innerText = `❌ Errado. A resposta certa é: ${perguntas[index].options[correta]}`;
+        resultado.style.color = "red";
       }
     }
 
     function nextQuestion() {
-      currentQuestion++;
-      if (currentQuestion >= questions.length) {
-        document.getElementById('question').innerText = "Fim do jogo! 🌎";
+      index++;
+      if (index >= perguntas.length) {
+        document.getElementById('question').innerText = "";
         document.getElementById('options').innerHTML = "";
-        document.getElementById('result').innerText = "Obrigado por jogar!";
+        document.getElementById('result').innerText = "";
+        document.querySelector('.next-btn').style.display = "none";
+        document.getElementById('endMessage').innerText = "🎉 Parabéns! Você completou o quiz ecológico!";
       } else {
-        loadQuestion();
+        carregarPergunta();
       }
     }
 
-    loadQuestion();
+    carregarPergunta();
   </script>
 </body>
 </html>
